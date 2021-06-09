@@ -30,7 +30,11 @@ serve({
           pretext: "text is empty",
         },
       ];
-      return new Response(JSON.stringify(body));
+      return new Response(JSON.stringify(body), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     }
 
     try {
