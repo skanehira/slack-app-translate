@@ -28,6 +28,7 @@ serve({
           "color": "#36a64f",
           "pretext": ctx.text,
           "text": await resp.text(),
+          "footer": "https://cloud.google.com/translate/docs/languages"
         },
       ],
     };
