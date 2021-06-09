@@ -9,7 +9,7 @@ interface Body {
   response_type: string;
   attachments: [{
     color?: string;
-    pretext: string;
+    pretext?: string;
     text?: string;
     footer?: string;
   }];
@@ -27,7 +27,7 @@ serve({
       body.attachments = [
         {
           color: "#D84646",
-          pretext: "text is empty",
+          text: "text is empty",
         },
       ];
       return new Response(JSON.stringify(body), {
@@ -56,7 +56,7 @@ serve({
       body.attachments = [
         {
           color: "#D84646",
-          pretext: e.toString(),
+          text: e.toString(),
         },
       ];
     }
