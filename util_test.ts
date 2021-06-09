@@ -38,6 +38,26 @@ Deno.test("parse text", () => {
         text: "a",
       },
     },
+    {
+      in: `en ja hello
+world`,
+      want: {
+        source: "en",
+        target: "ja",
+        text: "hello\nworld",
+      },
+    },
+    {
+      in: `en ja 
+hello
+world
+`,
+      want: {
+        source: "en",
+        target: "ja",
+        text: "\nhello\nworld\n",
+      },
+    },
   ];
 
   tests.forEach((test) => {

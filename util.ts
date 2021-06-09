@@ -28,7 +28,7 @@ export function parseText(text: string): Context {
   const ctx = {
     source: source,
     target: target,
-    text: contents.replaceAll("\\n", "\n"),
+    text: contents,
   };
   return ctx;
 }
