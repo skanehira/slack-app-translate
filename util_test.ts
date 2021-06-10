@@ -4,7 +4,7 @@ import {
 } from "https://deno.land/std@0.97.0/testing/asserts.ts";
 import { parseText } from "./util.ts";
 
-Deno.test("parse text", () => {
+{
   const tests = [
     {
       in: `en ja "hello world"`,
@@ -61,12 +61,14 @@ world
   ];
 
   tests.forEach((test) => {
-    const got = parseText(test.in);
-    assertEquals(got, test.want);
+    Deno.test(`parse text: ${test.in}`, () => {
+      const got = parseText(test.in);
+      assertEquals(got, test.want);
+    });
   });
-});
+}
 
-Deno.test("parse invalid text", () => {
+{
   const tests = [
     {
       in: `en ja"hello world"`,
@@ -95,12 +97,14 @@ Deno.test("parse invalid text", () => {
   ];
 
   tests.forEach((test) => {
-    assertThrows(
-      () => {
-        parseText(test.in);
-      },
-      Error,
-      test.want,
-    );
+    Deno.test(`parse invalid text: ${test.in}`, () => {
+      assertThrows(
+        () => {
+          parseText(test.in);
+        },
+        Error,
+        test.want,
+      );
+    });
   });
-});
+}
